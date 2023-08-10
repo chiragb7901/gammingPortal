@@ -1,0 +1,9 @@
+pip install Flask-Migrate==2.6.0
+pip install flask-script==2.0.5 
+pip install flask_bcrypt   
+pip install pymysql
+pip install alembic 
+pip install jwt 
+python -m venv venv   
+pip install flask_cors  
+pip install flask
