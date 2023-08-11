@@ -17,6 +17,7 @@ class BaffloService:
         probabilities = [0.02  ,0.09,  0.1,   0.11,  0.14  ,0.17,  0.2,   0.21,  0.31,   0.3,  0.4]
         valid_combinations = [combo for combo in product(combinations_set, repeat=comb_size)]
         random_combination = random.choice(valid_combinations)
+        outcome = random.choices(list(combinations), probabilities)[0]
         print("Randomly selected combination:", ' '.join(random_combination))     
         check =  "".join(random_combination)
         maping = {
