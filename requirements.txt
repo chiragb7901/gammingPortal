@@ -22,3 +22,5 @@ python-editor==1.0.4
 six==1.13.0
 SQLAlchemy==1.3.12
 Werkzeug==0.16.0
+jwt
+flask_cors
