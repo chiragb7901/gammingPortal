@@ -112,6 +112,7 @@ class UserService:
             user.username = data.get('username', user.username)
             user.password = data.get('password', user.password)
             user.role = data.get('role', user.role)
+            user.balance = data.get('balance', user.balance)
         
             new = User.update(user)
             response_object = {
@@ -121,6 +122,7 @@ class UserService:
                     "password":new.password,
                     "role":new.role,
                     "id":new.id,
+                    "balance":new.balance,
 
                 },
                 "message": "Successfully updated.",
@@ -132,6 +134,8 @@ class UserService:
                 "message": "User details not found.",
             }
             return response_object, 409
+    
+    
         
     @staticmethod
     def login(auth):
