@@ -14,6 +14,7 @@ class BaffloService:
         comb_size = 3
         
         combinations = {"DDD", "CCC", "GGG", "EEE", "BBB", "MMM", "AAA", "KKK", "QQQ", "JJJ", "FFF"}
+        probabilities = [0.02  ,0.09,  0.1,   0.11,  0.14  ,0.17,  0.2,   0.21,  0.31,   0.3,  0.4]
         valid_combinations = [combo for combo in product(combinations_set, repeat=comb_size)]
         random_combination = random.choice(valid_combinations)
         print("Randomly selected combination:", ' '.join(random_combination))     
