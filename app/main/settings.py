@@ -17,7 +17,9 @@ class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
     # uncomment the line below to use mysql
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/game'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3306/game'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://chiragB79:super_admin@chiragB79.mysql.pythonanywhere-services.com:3306/game'
+    SQLALCHEMY_DATABASE_URI = 'postgres://game_drw2_user:ldEucQbcYinjHjct3jRqulIDkRprHO12@dpg-cjb5dminip6c73cck4t0-a.oregon-postgres.render.com/game_drw2'
 
     DEBUG = True
     # SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(

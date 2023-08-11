@@ -77,5 +77,8 @@ class BaffloService:
                     "bid_price":bid
                 }
         response_object = TransactionService.save_new_transaction(resp)
-    
-        return response_object, 201
+        resp_obj = {
+            "data":response_object,
+            "pattern":check
+        }
+        return resp_obj, 201
