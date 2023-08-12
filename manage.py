@@ -7,11 +7,14 @@ from app.main import create_app, db
 from app.main.routes import add_resources, register_blueprints
 from flask_cors import CORS
 
-app = create_app(os.getenv('FLASK_ENV') or 'dev')
-app.app_context().push()
-manager = Manager(app)
-migrate = Migrate(app, db)
+app_raw = create_app(os.getenv('FLASK_ENV') or 'dev')
+app_raw.app_context().push()
+manager = Manager(app_raw)
+migrate = Migrate(app_raw, db)
 manager.add_command('db', MigrateCommand)
+add_resources(app_raw)
+register_blueprints(app_raw)
+app = app_raw
 CORS(app)
 
 @manager.command
