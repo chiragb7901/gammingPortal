@@ -23,8 +23,8 @@ def run():
     This method runs the flask app using manager command 
     after adding the routes using the methods in routes folder
     """
-    add_resources(app)
-    register_blueprints(app)
+    # add_resources(app)
+    # register_blueprints(app)
     app.run()
 
 @manager.command
