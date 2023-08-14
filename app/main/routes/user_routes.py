@@ -6,8 +6,7 @@ user = Blueprint("user", __name__)
 
 
 @user.route('/v1/users', methods=['GET'])
-@token_required
-def get_all_user(current_user):
+def get_all_user():
 
     user_entities = UserService().get_all_user_data()
 
@@ -20,8 +19,7 @@ def get_all_user(current_user):
 
 
 @user.route('/v1/user/<id>', methods=['GET'])
-@token_required
-def get_user_by_id(current_user,id):
+def get_user_by_id(id):
 
     user_entities = UserService().get_user_by_id(id=id)
 
@@ -56,8 +54,7 @@ def login():
 
 
 @user.route('/v1/user/delete/<id>', methods=['DELETE'])
-@token_required
-def delete_creditcard(current_user,id):
+def delete_creditcard(id):
 
     user = UserService().delete_user(id)
     resp = {
@@ -69,8 +66,7 @@ def delete_creditcard(current_user,id):
 
 
 @user.route('/v1/user/update/<id>', methods=['PUT'])
-@token_required
-def update_creditcard(current_user,id):
+def update_creditcard(id):
     data = request.get_json()
     user = UserService().update_user(id,data)
     resp = {

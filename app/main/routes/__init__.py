@@ -4,6 +4,7 @@ from .user_routes import user
 from .game_routes import game
 from.transaction_routes import transaction
 from .role_routes import role
+from .bafflo_game_routes import bafflo
 
 def add_resources(app):
     """
@@ -26,3 +27,4 @@ def register_blueprints(app):
     app.register_blueprint(game)
     app.register_blueprint(role)
     app.register_blueprint(transaction)
+    app.register_blueprint(bafflo)

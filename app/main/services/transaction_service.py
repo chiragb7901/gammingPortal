@@ -14,7 +14,7 @@ class TransactionService:
             transaction_dict = {}
             transaction_dict['id'] = user.id
             transaction_dict['user_id'] = user.user_id
-            transaction_dict['game_code'] = user.game_code
+            transaction_dict['game_id'] = user.game_id
             transaction_dict['bid_price'] = user.bid_price
             transaction_dict['result'] = user.result
             transaction_dict['price'] = user.price
@@ -33,7 +33,7 @@ class TransactionService:
             transaction_dict = {}
             transaction_dict['id'] = user.id
             transaction_dict['user_id'] = user.user_id
-            transaction_dict['game_code'] = user.game_code
+            transaction_dict['game_id'] = user.game_id
             transaction_dict['bid_price'] = user.bid_price
             transaction_dict['result'] = user.result
             transaction_dict['price'] = user.price
@@ -50,7 +50,7 @@ class TransactionService:
 
         new_transaction = Transaction(
                 user_id=data["user_id"],
-                game_code=data["game_code"],
+                game_id=data["game_id"],
                 bid_price=data["bid_price"],
                 result=data["result"],
                 price=data["price"]
@@ -60,7 +60,7 @@ class TransactionService:
                 "status": "success",
                 "object":{
                     "user_id":new.user_id,
-                    "game_code":new.game_code,
+                    "game_id":new.game_id,
                     "bid_price":new.bid_price,
                     "result":new.result,
                     "price":new.price,
@@ -100,7 +100,7 @@ class TransactionService:
         if transactionNew:
 
             transactionNew.user_id = data.get('game', transactionNew.user_id)
-            transactionNew.game_code = data.get('game', transactionNew.game_code)
+            transactionNew.game_id = data.get('game', transactionNew.game_id)
             transactionNew.bid_price = data.get('game', transactionNew.bid_price)
             transactionNew.result = data.get('game', transactionNew.result)
             transactionNew.price = data.get('game', transactionNew.price)
@@ -110,7 +110,7 @@ class TransactionService:
                 "status": "success",
                 "object":{
                     "user_id":new.user_id,
-                    "game_code":new.game_code,
+                    "game_id":new.game_id,
                     "bid_price":new.bid_price,
                     "result":new.result,
                     "price":new.price,

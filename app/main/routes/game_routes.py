@@ -7,8 +7,7 @@ game = Blueprint("game", __name__)
 
 
 @game.route('/v1/games', methods=['GET'])
-@token_required
-def get_all_game(current_user):
+def get_all_game():
 
     game_entities = GameService().get_all_Game_data()
 
@@ -21,8 +20,7 @@ def get_all_game(current_user):
 
 
 @game.route('/v1/games/<id>', methods=['GET'])
-@token_required
-def get_game_by_id(current_user,id):
+def get_game_by_id(id):
 
     game_entities = GameService().get_Game_by_id(id=id)
 
@@ -47,8 +45,7 @@ def save_new_game():
 
 
 @game.route('/v1/game/delete/<id>', methods=['DELETE'])
-@token_required
-def delete_game(current_user,id):
+def delete_game(id):
 
     game = GameService().delete_Game(id)
     resp = {
@@ -60,8 +57,7 @@ def delete_game(current_user,id):
 
 
 @game.route('/v1/game/update/<id>', methods=['PUT'])
-@token_required
-def update_game(current_user,id):
+def update_game(id):
     data = request.get_json()
     game = GameService().update_game(id,data)
     resp = {

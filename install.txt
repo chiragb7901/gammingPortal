@@ -7,3 +7,4 @@ pip install mysql
 pip install alembic 
 pip install jwt   
 pip install flask_cors  
+pip install pymysql 

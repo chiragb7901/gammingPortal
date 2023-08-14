@@ -7,8 +7,7 @@ transaction = Blueprint("transaction", __name__)
 
 
 @transaction.route('/v1/transactions', methods=['GET'])
-@token_required
-def get_all_transaction(current_user):
+def get_all_transaction():
 
     transaction_entities = TransactionService().get_all_transaction_data()
 
@@ -21,8 +20,7 @@ def get_all_transaction(current_user):
 
 
 @transaction.route('/v1/transaction/<id>', methods=['GET'])
-@token_required
-def get_transaction_by_id(current_user,id):
+def get_transaction_by_id(id):
 
     transaction_entities = TransactionService().get_transaction_by_id(id=id)
 
@@ -45,8 +43,7 @@ def save_new_transaction():
     return resp
 
 @transaction.route('/v1/transaction/delete/<id>', methods=['DELETE'])
-@token_required
-def delete_transaction(current_user,id):
+def delete_transaction(id):
 
     transaction = TransactionService().delete_transaction(id)
     resp = {
@@ -58,8 +55,7 @@ def delete_transaction(current_user,id):
 
 
 @transaction.route('/v1/transaction/update/<id>', methods=['PUT'])
-@token_required
-def update_transaction(current_user,id):
+def update_transaction(id):
     data = request.get_json()
     transaction = TransactionService().update_transaction(id,data)
     resp = {

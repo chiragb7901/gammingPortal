@@ -8,8 +8,9 @@ class BaffloService:
         pass
     
     @staticmethod
-    def spin(data):
-        bid = data.bid_price
+    def spin(id,data):
+
+        bid = data["bid_price"]
         combinations_set = {'D', 'C', 'G', 'E', 'B', 'M', 'A', 'K', 'Q', 'J', 'F'}
         comb_size = 3
         
@@ -29,7 +30,7 @@ class BaffloService:
         }
         win = "Loss"
         win_amount = 0;
-        user_info = UserService.get_user_by_id(data.user_id)
+        user_info = UserService.get_user_by_id(id)
         if check in combinations:
             win = "Win"
             if check=="DDD":
@@ -58,19 +59,19 @@ class BaffloService:
             change = {
                 "balance":finalBal
             }
-            finalBal = user_info.balance +win_amount - bid
+            finalBal = user_info[0]["balance"] + win_amount - bid
             rev = {
                 "balance":finalBal
             }
-            UserService.update_user(data.user_id,rev)
+            UserService.update_user(id,rev)
         if win_amount==0:
-            finalBal = user_info.balance +win_amount - bid
+            finalBal = user_info[0]["balance"] + win_amount - bid
             rev = {
                 "balance":finalBal
             }
-            UserService.update_user(data.user_id,rev)
+            UserService.update_user(id,rev)
         resp={
-                    "user_id":data.user_id,
+                    "user_id":id,
                     "game_id":1,
                     "result":win,
                     "price": win_amount,
@@ -78,7 +79,7 @@ class BaffloService:
                 }
         response_object = TransactionService.save_new_transaction(resp)
         resp_obj = {
-            "data":response_object,
+            "data":resp,
             "pattern":check
         }
         return resp_obj, 201

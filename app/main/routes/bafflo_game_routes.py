@@ -7,10 +7,9 @@ from app.main.services.user_service import token_required
 bafflo = Blueprint("bafflo", __name__)
 
 @bafflo.route('/v1/game/bafflo/spin/<id>', methods=['POST'])
-@token_required
-def spin(current_user):
+def spin_game(id):
     data = request.get_json()
-    spin_entitiy = BaffloService().spin(data)
+    spin_entitiy = BaffloService().spin(id,data)
     resp = {
         'status': True,
         'msg': 'Successful Spin',

@@ -7,8 +7,7 @@ role = Blueprint("role", __name__)
 
 
 @role.route('/v1/roles', methods=['GET'])
-@token_required
-def get_all_role(current_user):
+def get_all_role():
 
     role_entities = RoleService().get_all_role_data()
 
@@ -21,8 +20,7 @@ def get_all_role(current_user):
 
 
 @role.route('/v1/role/<id>', methods=['GET'])
-@token_required
-def get_role_by_id(current_user,id):
+def get_role_by_id(id):
 
     role_entities = RoleService().get_role_by_id(id=id)
 
@@ -45,8 +43,7 @@ def save_new_role():
     return resp
 
 @role.route('/v1/role/delete/<id>', methods=['DELETE'])
-@token_required
-def delete_role(current_user,id):
+def delete_role(id):
 
     role = RoleService().delete_role(id)
     resp = {
@@ -58,8 +55,7 @@ def delete_role(current_user,id):
 
 
 @role.route('/v1/role/update/<id>', methods=['PUT'])
-@token_required
-def update_role(current_user,id):
+def update_role(id):
     data = request.get_json()
     role = RoleService().update_role(id,data)
     resp = {

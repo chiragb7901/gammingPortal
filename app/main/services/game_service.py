@@ -14,7 +14,6 @@ class GameService:
             game_dict = {}
             game_dict['id'] = user.id
             game_dict['game'] = user.game
-            game_dict['game_code'] = user.game_code
             game_dict['created_at'] = user.created_at
             game_dict['updated_at'] = user.updated_at
            
@@ -30,7 +29,6 @@ class GameService:
             game_dict = {}
             game_dict['id'] = user.id
             game_dict['game'] = user.game
-            game_dict['game_code'] = user.game_code
             game_dict['created_at'] = user.created_at
             game_dict['updated_at'] = user.updated_at
 
@@ -43,15 +41,13 @@ class GameService:
     def save_new_Game(data):
 
         new_game = Game(
-                game=data["game"],
-                game_code=data["game_code"]
+                game=data["game"]
         )
         new = Game.create(new_game)
         response_object = {
                 "status": "success",
                 "object":{
                     "game":new.game,
-                    "game_code":new.game_code,
                     "id":new.id
 
                 },
@@ -88,14 +84,12 @@ class GameService:
         if gameNew:
 
             gameNew.game = data.get('game', gameNew.game)
-            gameNew.game_code = data.get('game_code', gameNew.game_code)
 
             new = Game.update(gameNew)
             response_object = {
                 "status": "success",
                 "object":{
                     "game":new.game,
-                    "game_code":new.game_code,
                     "id":new.id
 
                 },
